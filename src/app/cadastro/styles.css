@@ -1,0 +1,37 @@
+body {
+  background-color: #c3c3c3;
+}
+
+.login-background {
+  background-color: #1E201E;
+  border: 2px solid #d3401b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-login {
+  background-color: #d3401b;
+  border: #000000 solid 1px;
+}
+
+.button-login:hover {
+  transition: 300ms;
+  background-color: #ff3300;
+  border: #ffffff solid 1px;
+}
+
+.text-orange {
+  color: #FF6600;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.divider-custom {
+  display: block;
+  height: 1px;
+  background-color: orange;
+}

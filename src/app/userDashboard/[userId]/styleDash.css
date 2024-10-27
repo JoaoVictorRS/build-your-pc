@@ -1,0 +1,22 @@
+.imagem_perfil_dashboard {
+  border-radius: 50%;
+  border: 4px solid orange;
+  object-fit: cover;
+  width: 400px;
+  height: 400px;
+  transition: transform 0.3s ease;
+}
+
+.imagem_perfil_dashboard:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.title-enderecos {
+  font-family: 'Roboto', sans-serif; 
+  font-size: 1.8rem; 
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

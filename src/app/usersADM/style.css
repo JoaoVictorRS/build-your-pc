@@ -1,0 +1,11 @@
+body{
+  background-color: #c3c3c3;
+}
+
+.title-custom {
+  font-family: 'Roboto', sans-serif; 
+  font-size: 1.8rem; 
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

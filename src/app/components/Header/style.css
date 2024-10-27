@@ -1,0 +1,69 @@
+.header_background {
+  background-color: #1E201E;
+}
+
+.nav-link-custom {
+  color: white !important;
+  transition: opacity 0.2s ease;
+  font-size: large;
+  text-decoration: none;
+}
+
+.nav-link-custom-login {
+  color: #59A32B !important;
+  transition: opacity 0.2s ease;
+  font-size: large;
+  text-decoration: none;
+}
+
+.nav-link-custom-login:hover {
+  color: #7ee83c !important;
+}
+
+.nav-link-custom:hover {
+  opacity: 0.7;
+}
+
+.NavDropdown-custom {
+  color: white !important;
+  transition: opacity 0.2s ease;
+  font-size: large;
+  text-decoration: none;
+}
+
+.imagem_perfil {
+  border-radius: 50%;
+  border: 2px solid orange;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+
+.imagem_perfil:hover {
+  transition: 300ms;
+  border-color: #ffffff;
+}
+
+.dropdown-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu-right {
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  top: 50px;
+  z-index: 1000;
+}
+
+.link-perfil{
+  text-decoration: none;
+  color: black;
+}
+
+.sair-botao{
+  border-radius:5px;
+}
