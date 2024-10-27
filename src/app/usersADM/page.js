@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import { MdDelete } from "react-icons/md"
 import { FaRegEdit } from "react-icons/fa"
 import Link from "next/link"
-import './style.css'
+import './usersADMStyle.css'
 import { Rings } from "react-loader-spinner"
 
 export default function Page() {

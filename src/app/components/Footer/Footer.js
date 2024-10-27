@@ -4,7 +4,7 @@ import { Col, Container, Nav, Row } from "react-bootstrap"
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
 import { BiSupport } from "react-icons/bi";
-import './style.css'
+import './footerStyle.css'
 
 export default function Footer() {
   return (

@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import { Button, Container, Form } from 'react-bootstrap';
 import Link from 'next/link';
-import './styles.css'
+import './loginStyles.css'
 import Image from 'next/image';
 import logo from '../public/logo_menor.png'
 

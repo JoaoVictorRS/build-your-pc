@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../components/Footer/Footer';
 import { Formik } from 'formik';
-import './styles.css';
+import './cadastroStyles.css';
 import CadastroValidator from '../validations/CadastroValidator';
 import { v4 } from 'uuid';
 import ReactInputMask from 'react-input-mask';
