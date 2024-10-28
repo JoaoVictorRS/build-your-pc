@@ -1,0 +1,25 @@
+.texto-custom {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: orange;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.imagem_produto_preview {
+  border: 2px dotted rgb(49, 49, 49);
+  object-fit: cover;
+  width: 400px;
+  height: 400px;
+}
+
+.imagem_produto_preview_no_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 2px dotted rgb(255, 0, 0);
+  width: 400px;
+  height: 400px;
+}

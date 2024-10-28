@@ -11,12 +11,14 @@ import { MdOutlineMouse } from "react-icons/md";
 import { FaShoppingCart, FaUser, FaUsersCog } from "react-icons/fa";
 import { useEffect, useState } from "react"
 import { IoIosLogOut } from "react-icons/io";
+import { useRouter } from "next/navigation"
 
 export default function Header() {
 
   const [show, setShow] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null)
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const route = useRouter()
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -33,6 +35,7 @@ export default function Header() {
   const handleLogoutClick = () => {
     localStorage.removeItem('loggedInUser');
     setLoggedInUser(null);
+    route.push('/')
   };
 
   return (
@@ -53,6 +56,7 @@ export default function Header() {
               onMouseEnter={showDropdown}
               onMouseLeave={hideDropdown}
             >
+              <NavDropdown.Item href="/hardwares/processador">Processador</NavDropdown.Item>
               <NavDropdown.Item href="/hardwares/placa_mae">Placa Mãe</NavDropdown.Item>
               <NavDropdown.Item href="/hardwares/fontes">Fontes</NavDropdown.Item>
               <NavDropdown.Item href="/hardwares/coolers">Coolers</NavDropdown.Item>
@@ -89,7 +93,7 @@ export default function Header() {
                     <FaUsersCog size={25} className="text-white" />
                   </Nav.Link>
                 ) : (
-                  <></>
+                  <p className="text-warning ms-3 mt-4">Olá, {loggedInUser.nome}</p>
                 )}
               </>
             )

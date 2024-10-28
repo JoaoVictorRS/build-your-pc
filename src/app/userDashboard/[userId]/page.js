@@ -12,14 +12,14 @@ import './styleDash.css'
 import { FaRegEdit } from "react-icons/fa"
 
 
-export default function Page() {
+export default function Page({ params }) {
 
-  const [loggedInUser, setLoggedInUser] = useState(null)
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+  const loggedInUser = users.find(item => item.id == params.userId);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    setLoggedInUser(user);
     setTimeout(() => { setLoading(false); }, 2000);
   }, [])
 
@@ -49,7 +49,17 @@ export default function Page() {
             <span></span>
           </Col>
           <Col md={4} className="text-center">
-            <Image src={loggedInUser.imagem_perfil} className="imagem_perfil_dashboard rounded-circle" alt="Foto do Usuário" />
+            {loggedInUser && loggedInUser.imagem_perfil === '' ? (
+              <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ68D1zB62HiAWZAkQpessCgGpmfvJQUX8Rhg&s"
+                className="imagem_perfil_dashboard rounded-circle"
+                alt="Image Placeholder"
+              />
+            ) :
+              <Image src={loggedInUser.imagem_perfil}
+                className="imagem_perfil_dashboard rounded-circle"
+                alt="Foto do Usuário"
+              />
+            }
           </Col>
           <Col md={6} className="d-flex flex-column justify-content-center ms-3">
             <h3 className="mb-5">@{loggedInUser.nome}</h3>

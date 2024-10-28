@@ -27,8 +27,6 @@ export default function Page({ params }) {
       users.push(dados);
     }
 
-    localStorage.removeItem('loggedInUser');
-    localStorage.setItem('loggedInUser', JSON.stringify(users[0]));
     localStorage.setItem('users', JSON.stringify(users));
     return route.push('/userDashboard/' + params.id);
   }
