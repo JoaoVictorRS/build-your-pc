@@ -46,7 +46,7 @@ export default function Header() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link className="nav-link-custom me-4" href="/"><IoBuildOutline /> Monte seu PC</Nav.Link>
-            <Nav.Link className="nav-link-custom me-4" href="/perifericos"><MdOutlineMouse /> Perifericos</Nav.Link>
+            <Nav.Link className="nav-link-custom me-4" href="/perifericos"><MdOutlineMouse /> Periféricos</Nav.Link>
             <Nav.Link className="nav-link-custom me-4" href="/computadores"><FaComputer /> Computadores</Nav.Link>
             <NavDropdown
               title={<span className="text-light"><IoHardwareChipOutline /> Hardware</span>}
@@ -57,12 +57,12 @@ export default function Header() {
               onMouseLeave={hideDropdown}
             >
               <NavDropdown.Item href="/hardwares/processador">Processador</NavDropdown.Item>
-              <NavDropdown.Item href="/hardwares/placa_mae">Placa Mãe</NavDropdown.Item>
+              <NavDropdown.Item href="/hardwares/placa_mae">Placa-mãe</NavDropdown.Item>
               <NavDropdown.Item href="/hardwares/fontes">Fontes</NavDropdown.Item>
               <NavDropdown.Item href="/hardwares/coolers">Coolers</NavDropdown.Item>
-              <NavDropdown.Item href="/hardwares/memoria_ram">Memoria RAM</NavDropdown.Item>
+              <NavDropdown.Item href="/hardwares/memoria_ram">Memória RAM</NavDropdown.Item>
               <NavDropdown.Item href="/hardwares/armazenamento_interno">Armazenamento Interno</NavDropdown.Item>
-              <NavDropdown.Item href="/hardwares/placa_de_video">Placa de Video</NavDropdown.Item>
+              <NavDropdown.Item href="/hardwares/placa_de_video">Placa de Vídeo</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav className="ms-auto align-items-center">

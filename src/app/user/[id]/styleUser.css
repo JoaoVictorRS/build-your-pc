@@ -14,3 +14,13 @@
   width: 400px;
   height: 400px;
 }
+
+.imagem_produto_preview_no_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 2px dotted rgb(255, 0, 0);
+  width: 400px;
+  height: 400px;
+}

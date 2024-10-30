@@ -149,8 +149,8 @@ export default function Page({ params }) {
                                                     <option value='computadores'>Computadores</option>
                                                     <option value='processador'>Processador</option>
                                                     <option value='placa_mae'>Placa Mãe</option>
-                                                    <option value='fonte'>Fonte</option>
-                                                    <option value='cooler'>Cooler</option>
+                                                    <option value='fontes'>Fonte</option>
+                                                    <option value='coolers'>Cooler</option>
                                                     <option value='memoria_ram'>Memória RAM</option>
                                                     <option value='armazenamento_interno'>Armazenamento Interno</option>
                                                     <option value='placa_de_video'>Placa de Vídeo</option>

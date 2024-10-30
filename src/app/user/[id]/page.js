@@ -112,9 +112,12 @@ export default function Page({ params }) {
                   </Col>
 
                   <Col>
-                    <div className="d-flex justify-content-center align-items-center">
-                      {values.imagem_perfil && (
+                    <div className="d-flex justify-content-center align-items-center mt-4">
+                      {values && values.imagem_perfil === '' ? (
+                        <h2 className="text-danger imagem_produto_preview_no_image">Sem Imagem!</h2>
+                      ) : (
                         <Image src={values.imagem_perfil} alt="Preview" className="imagem_perfil_preview" />
+
                       )}
                     </div>
                   </Col>

@@ -4,8 +4,10 @@ import Link from "next/link"
 import Footer from "../components/Footer/Footer"
 import Header from "../components/Header/Header"
 import { FaEye, FaPlusCircle, FaTimes } from "react-icons/fa";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import './computadoresStyle.css'
+import { FaComputer } from "react-icons/fa6";
 
 export default function Page() {
 
@@ -20,11 +22,14 @@ export default function Page() {
     setComputadores(dados)
   }, [])
 
-  console.log(computadores)
-
   return (
     <>
       <Header />
+      <Image src="https://themes.kabum.com.br/conteudo/layout/5456/1729797711.jpg" className="w-100" alt="carrousel" />
+      <div className="d-flex justify-content-center align-items-center titulo_separador text-white py-2">
+        <h3><FaComputer /> COMPUTADORES <FaComputer /></h3>
+      </div>
+
       <Container>
         {loggedInUser && loggedInUser.email === "admin@admin.com" ? (
           <>
@@ -38,17 +43,17 @@ export default function Page() {
         ) :
           <></>
         }
-        
+
         <Row>
           {computadores.map(item => (
-            <Col md={4}>
+            <Col md={3} className="my-3">
               {loggedInUser && loggedInUser.email === "admin@admin.com" ? (
                 <>
-                  <Card key={item.id} style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={item.imagem} alt="iamem" />
+                  <Card key={item.id} className="card_produto" style={{ width: '18rem' }}>
+                    <Card.Img variant="top" className="p-3" src={item.imagem} alt="produto_imagem" />
                     <Card.Body>
-                      <Card.Title>{item.nome}</Card.Title>
-                      <Card.Text>R$ {item.preco}</Card.Text>
+                      <Card.Title className="nome-produto">{item.nome}</Card.Title>
+                      <Card.Text className="preco-produto border-top"><b>R$ {item.preco}</b></Card.Text>
                       <Link
                         href={`/produtos/form/${item.id}?tipo=${item.tipo}`}
                         className="btn btn-success my-3 w-50"
@@ -74,12 +79,12 @@ export default function Page() {
                 </>
               ) :
                 <>
-                  <Card key={item.id} style={{ width: '18rem' }}>
-                    <Link href={`/detalhes/${item.id}`}>
-                      <Card.Img variant="top" src={item.imagem} alt="iamem" />
+                  <Card key={item.id} className="card_produto" style={{ width: '18rem' }}>
+                    <Link className="link_card" href={`/detalhes/${item.id}`}>
+                      <Card.Img variant="top" className="p-3" src={item.imagem} alt="produto_imagem" />
                       <Card.Body>
-                        <Card.Title>{item.nome}</Card.Title>
-                        <Card.Text>R$ {item.preco}</Card.Text>
+                        <Card.Title className="nome-produto">{item.nome}</Card.Title>
+                        <Card.Text className="preco-produto border-top"><b>R$ {item.preco}</b></Card.Text>
                       </Card.Body>
                     </Link>
                   </Card>
