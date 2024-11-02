@@ -8,20 +8,25 @@ import { Button, Card, Col, Container, Form, Image, Row } from "react-bootstrap"
 import { useEffect, useState } from "react";
 import './computadoresStyle.css'
 import { FaComputer } from "react-icons/fa6";
+import { Rings } from "react-loader-spinner";
 
 export default function Page() {
   const [computadores, setComputadores] = useState([]);
   const [filteredComputadores, setFilteredComputadores] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null)
+  const [loading, setLoading] = useState(true); // Estado de carregamento
 
   useEffect(() => {
-    const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
-    const dados = produtos.filter(item => item.tipo === 'computadores');
-    setComputadores(dados);
-    setFilteredComputadores(dados);
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    setLoggedInUser(user);
+    setTimeout(() => { // Simula um atraso de carregamento
+      const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+      const dados = produtos.filter(item => item.tipo === 'computadores');
+      setComputadores(dados);
+      setFilteredComputadores(dados);
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      setLoggedInUser(user);
+      setLoading(false); // Conclui o carregamento
+    }, 1000); // Tempo de espera para exibir o loading
   }, []);
 
   function handleSearch(event) {
@@ -38,6 +43,19 @@ export default function Page() {
       setComputadores(dados);
       setFilteredComputadores(dados);
     }
+  }
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Rings
+          height="100"
+          width="100"
+          color="#E43B14"
+          ariaLabel="loading"
+        />
+      </div>
+    );
   }
 
   return (

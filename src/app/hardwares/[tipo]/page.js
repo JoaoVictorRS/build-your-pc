@@ -8,6 +8,7 @@ import Header from "@/app/components/Header/Header";
 import Footer from "@/app/components/Footer/Footer";
 import './hardwaresStyle.css';
 import { IoHardwareChipOutline } from "react-icons/io5";
+import { Rings } from "react-loader-spinner";
 
 export default function Page({ params }) {
 
@@ -15,14 +16,18 @@ export default function Page({ params }) {
   const [filteredHardwares, setFilteredHardwares] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
-    const dados = produtos.filter(item => item.tipo === params.tipo);
-    setHardwares(dados);
-    setFilteredHardwares(dados);
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    setLoggedInUser(user);
+    setTimeout(() => { // Simula um atraso de carregamento
+      const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+      const dados = produtos.filter(item => item.tipo === params.tipo);
+      setHardwares(dados);
+      setFilteredHardwares(dados);
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      setLoggedInUser(user)
+      setLoading(false);
+    }, 1000);
   }, [params.tipo]);
 
   function formatarTexto(texto) {
@@ -43,6 +48,19 @@ export default function Page({ params }) {
     );
 
     setFilteredHardwares(filtered);
+  }
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Rings
+          height="100"
+          width="100"
+          color="#E43B14"
+          ariaLabel="loading"
+        />
+      </div>
+    );
   }
 
   return (

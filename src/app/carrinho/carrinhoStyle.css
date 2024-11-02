@@ -1,0 +1,18 @@
+.deletar-icon {
+  color: rgb(255, 0, 0);
+  transition: opacity 0.2s ease;
+}
+
+.deletar-icon:hover {
+  color: rgb(151, 0, 0);
+  transition: 500ms;
+  cursor: pointer;
+}
+
+.preco-final {
+  font-size: 2rem;
+}
+
+.titulo-carrinho {
+  color: orangered;
+}

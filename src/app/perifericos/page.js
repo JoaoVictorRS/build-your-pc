@@ -8,6 +8,7 @@ import { Button, Card, Col, Container, Image, Row, Form } from "react-bootstrap"
 import { useEffect, useState } from "react";
 import './perifericosStyle.css';
 import { MdOutlineMouse } from "react-icons/md";
+import { Rings } from "react-loader-spinner";
 
 export default function Page() {
 
@@ -15,14 +16,18 @@ export default function Page() {
   const [filteredPerifericos, setFilteredPerifericos] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true); // Estado de carregamento
 
   useEffect(() => {
-    const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
-    const dados = produtos.filter(item => item.tipo === 'perifericos');
-    setPerifericos(dados);
-    setFilteredPerifericos(dados); // Exibe todos os produtos inicialmente
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    setLoggedInUser(user);
+    setTimeout(() => { // Simulando um delay para o carregamento
+      const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+      const dados = produtos.filter(item => item.tipo === 'perifericos');
+      setPerifericos(dados);
+      setFilteredPerifericos(dados);
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      setLoggedInUser(user);
+      setLoading(false); // Conclui o carregamento
+    }, 1000); // Tempo de espera para exibir o loading
   }, []);
 
   function excluir(id) {
@@ -48,6 +53,19 @@ export default function Page() {
     );
 
     setFilteredPerifericos(filtered);
+  }
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Rings
+          height="100"
+          width="100"
+          color="#E43B14"
+          ariaLabel="loading"
+        />
+      </div>
+    );
   }
 
   return (

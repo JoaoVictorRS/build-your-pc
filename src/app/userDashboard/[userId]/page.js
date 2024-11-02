@@ -96,6 +96,29 @@ export default function Page({ params }) {
             </Link>
           </div>
         </Row>
+
+        <Row className="mt-5 px-5 pt-3 border-top">
+          <Col md={12}>
+            <div className='d-flex justify-content-center align-items-center mb-3 mt-2 title-enderecos'>
+              <h4>Compras Realizadas</h4>
+            </div>
+
+            {loggedInUser.compras_realizadas && loggedInUser.compras_realizadas.length > 0 ? (
+              loggedInUser.compras_realizadas.map((compra, index) => (
+                <Card key={index} className="mb-3">
+                  <Card.Body>
+                    <Card.Text><strong>Produto:</strong> {compra.nome}</Card.Text>
+                    <Card.Text><strong>Marca:</strong> {compra.marca}</Card.Text>
+                    <Card.Text><strong>Preço:</strong> R$ {compra.preco}</Card.Text>
+                    <Card.Img src={compra.imagem} alt={compra.nome} thumbnail style={{ maxWidth: '100px' }} />
+                  </Card.Body>
+                </Card>
+              ))
+            ) : (
+              <p className="text-center">Nenhuma compra realizada.</p>
+            )}
+          </Col>
+        </Row>
       </Container>
       <Footer />
     </>

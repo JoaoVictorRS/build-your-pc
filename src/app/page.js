@@ -8,17 +8,22 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import './mainStyle.css'
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import { Rings } from "react-loader-spinner";
 
 export default function Page() {
 
   const [produtos, setProdutos] = useState([])
   const [loggedInUser, setLoggedInUser] = useState(null)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const produtos = JSON.parse(localStorage.getItem('produtos')) || []
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    setLoggedInUser(user);
-    setProdutos(produtos)
+    setTimeout(() => {
+      const produtos = JSON.parse(localStorage.getItem('produtos')) || []
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      setLoggedInUser(user);
+      setProdutos(produtos)
+      setLoading(false);
+    }, 2000);
   }, [])
 
   function excluir(id) {
@@ -39,6 +44,19 @@ export default function Page() {
   }
 
   const gruposDeProdutos = dividirProdutosEmGrupos(produtos);
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Rings
+          height="100"
+          width="100"
+          color="#E43B14"
+          ariaLabel="loading"
+        />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -81,7 +99,7 @@ export default function Page() {
           <></>
         }
 
-        <h4 className="titulo_cards mt-5 ms-3"><FaStar color="orange" size={20}/> Mais Vendidos</h4>
+        <h4 className="titulo_cards mt-5 ms-3"><FaStar color="orange" size={20} /> Mais Vendidos</h4>
         <Carousel indicators={false} className="">
           {gruposDeProdutos.map((grupo, index) => (
             <Carousel.Item className="p-3" key={index}>
