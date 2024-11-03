@@ -1,0 +1,33 @@
+.texto-custom {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: orange;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/*Estilização do cards*/
+.nome-produto {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.1rem;
+}
+
+.link_card {
+  text-decoration: none;
+  color: #1E201E;
+}
+
+.card_produto {
+  transition: transform 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card_produto:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}

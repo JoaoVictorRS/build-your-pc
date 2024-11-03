@@ -45,7 +45,7 @@ export default function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="nav-link-custom me-4" href="/"><IoBuildOutline /> Monte seu PC</Nav.Link>
+            <Nav.Link className="nav-link-custom me-4" href="/montarPC"><IoBuildOutline /> Monte seu PC</Nav.Link>
             <Nav.Link className="nav-link-custom me-4" href="/perifericos"><MdOutlineMouse /> Periféricos</Nav.Link>
             <Nav.Link className="nav-link-custom me-4" href="/computadores"><FaComputer /> Computadores</Nav.Link>
             <NavDropdown
