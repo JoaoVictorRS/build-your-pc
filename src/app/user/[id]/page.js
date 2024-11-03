@@ -11,6 +11,8 @@ import { MdOutlineArrowBack } from "react-icons/md";
 import ReactInputMask from "react-input-mask";
 import './styleUser.css'
 import { ImArrowRight } from "react-icons/im";
+import UserValidator from "@/app/validations/UserValidator";
+import Swal from "sweetalert2";
 
 export default function Page({ params }) {
 
@@ -28,7 +30,17 @@ export default function Page({ params }) {
     }
 
     localStorage.setItem('users', JSON.stringify(users));
-    return route.push('/userDashboard/' + params.id);
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Sucesso!',
+      text: 'As mudanças foram salvas com sucesso.',
+      timer: 2000, // Duração do alerta em milissegundos
+      showConfirmButton: false,
+      willClose: () => {
+        route.push('/userDashboard/' + params.id);
+      }
+    });
   }
 
   return (
@@ -41,13 +53,16 @@ export default function Page({ params }) {
 
         <Formik
           initialValues={user}
+          validationSchema={UserValidator}
           onSubmit={values => salvar(values)}
         >
           {({
             values,
             handleChange,
             handleSubmit,
-            setFieldValue
+            setFieldValue,
+            errors,
+            touched
           }) => {
             return (
               <Form>
@@ -81,12 +96,21 @@ export default function Page({ params }) {
                     <Form.Group as={Row} className="mb-4" controlId="cpf">
                       <Form.Label column sm='1'><b>CPF:</b> </Form.Label>
                       <Col sm='10'>
-                        <Form.Control
-                          type="text"
-                          name="cpf"
+                        <ReactInputMask
+                          mask="999.999.999-99"
                           value={values.cpf}
-                          onChange={handleChange('cpf')}
-                        />
+                          onChange={handleChange}
+                          onBlur={() => setFieldValue("cpf", values.cpf)}
+                        >
+                          {() => (
+                            <Form.Control
+                              type="text"
+                              name="cpf"
+                              isInvalid={touched.cpf && !!errors.cpf}
+                            />
+                          )}
+                        </ReactInputMask>
+                        <Form.Control.Feedback type="invalid">{errors.cpf}</Form.Control.Feedback>
                       </Col>
                     </Form.Group>
 

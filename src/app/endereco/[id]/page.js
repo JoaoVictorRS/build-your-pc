@@ -11,6 +11,7 @@ import { MdOutlineArrowBack } from "react-icons/md";
 import axios from "axios";
 import ReactInputMask from "react-input-mask";
 import './styleEndereco.css'
+import EnderecoValidator from "@/app/validations/EnderecoValidator";
 
 export default function Page({ params }) {
 
@@ -32,7 +33,7 @@ export default function Page({ params }) {
 
   async function buscarEnderecoPorCep(cep, setFieldValue, index) {
     const cepSemMascara = cep.replace(/\D/g, '');
-    if (cepSemMascara.length === 8) { 
+    if (cepSemMascara.length === 8) {
       try {
         const response = await axios.get(`https://viacep.com.br/ws/${cepSemMascara}/json/`);
         const { logradouro, localidade, uf, complemento, bairro } = response.data;
@@ -54,12 +55,15 @@ export default function Page({ params }) {
       <Container>
         <Formik
           initialValues={user}
+          validationSchema={EnderecoValidator}
           onSubmit={values => salvar(values)}
         >
           {({
             values,
             handleChange,
             handleSubmit,
+            errors,
+            touched,
             setFieldValue
           }) => {
             return (
@@ -87,8 +91,15 @@ export default function Page({ params }) {
                                       buscarEnderecoPorCep(e.target.value, setFieldValue, index);
                                     }}
                                   >
-                                    {(inputProps) => <Form.Control {...inputProps} placeholder="11111-111" name={`enderecos[${index}].cep`} />}
+                                    {(inputProps) => <Form.Control {...inputProps}
+                                      placeholder="11111-111"
+                                      name={`enderecos[${index}].cep`}
+                                      isInvalid={touched.enderecos?.[index]?.cep && !!errors.enderecos?.[index]?.cep}
+                                    />}
                                   </ReactInputMask>
+                                  <Form.Control.Feedback type="invalid">
+                                    {errors.enderecos?.[index]?.cep}
+                                  </Form.Control.Feedback>
                                 </Form.Group>
                               </Col>
 
@@ -99,9 +110,13 @@ export default function Page({ params }) {
                                     type="text"
                                     name={`enderecos[${index}].logradouro`}
                                     placeholder="QNM 27 Conj..."
-                                    value={endereco.logradouro || ''}
+                                    value={endereco.logradouro || ""}
                                     onChange={handleChange}
+                                    isInvalid={touched.enderecos?.[index]?.logradouro && !!errors.enderecos?.[index]?.logradouro}
                                   />
+                                  <Form.Control.Feedback type="invalid">
+                                    {errors.enderecos?.[index]?.logradouro}
+                                  </Form.Control.Feedback>
                                 </Form.Group>
                               </Col>
 
@@ -111,10 +126,14 @@ export default function Page({ params }) {
                                   <Form.Control
                                     type="text"
                                     name={`enderecos[${index}].cidade`}
-                                    value={endereco.cidade || ''}
                                     placeholder="Piracicaba"
+                                    value={endereco.cidade || ""}
                                     onChange={handleChange}
+                                    isInvalid={touched.enderecos?.[index]?.cidade && !!errors.enderecos?.[index]?.cidade}
                                   />
+                                  <Form.Control.Feedback type="invalid">
+                                    {errors.enderecos?.[index]?.cidade}
+                                  </Form.Control.Feedback>
                                 </Form.Group>
                               </Col>
 
@@ -124,9 +143,13 @@ export default function Page({ params }) {
                                   <Form.Control
                                     type="text"
                                     name={`enderecos[${index}].bairro`}
-                                    value={endereco.bairro || ''}
+                                    value={endereco.bairro || ""}
                                     onChange={handleChange}
+                                    isInvalid={touched.enderecos?.[index]?.bairro && !!errors.enderecos?.[index]?.bairro}
                                   />
+                                  <Form.Control.Feedback type="invalid">
+                                    {errors.enderecos?.[index]?.bairro}
+                                  </Form.Control.Feedback>
                                 </Form.Group>
                               </Col>
 
@@ -135,11 +158,15 @@ export default function Page({ params }) {
                                   <Form.Label>Estado</Form.Label>
                                   <Form.Control
                                     type="text"
-                                    placeholder="São Paulo"
                                     name={`enderecos[${index}].estado`}
-                                    value={endereco.estado || ''}
+                                    placeholder="SP"
+                                    value={endereco.estado || ""}
                                     onChange={handleChange}
+                                    isInvalid={touched.enderecos?.[index]?.estado && !!errors.enderecos?.[index]?.estado}
                                   />
+                                  <Form.Control.Feedback type="invalid">
+                                    {errors.enderecos?.[index]?.estado}
+                                  </Form.Control.Feedback>
                                 </Form.Group>
                               </Col>
 
@@ -148,11 +175,15 @@ export default function Page({ params }) {
                                   <Form.Label>Casa</Form.Label>
                                   <Form.Control
                                     type="text"
-                                    placeholder="ex: 03"
                                     name={`enderecos[${index}].casa`}
-                                    value={endereco.casa || ''}
+                                    placeholder="ex: 03"
+                                    value={endereco.casa || ""}
                                     onChange={handleChange}
+                                    isInvalid={touched.enderecos?.[index]?.casa && !!errors.enderecos?.[index]?.casa}
                                   />
+                                  <Form.Control.Feedback type="invalid">
+                                    {errors.enderecos?.[index]?.casa}
+                                  </Form.Control.Feedback>
                                 </Form.Group>
                               </Col>
 
@@ -162,7 +193,7 @@ export default function Page({ params }) {
                                   <Form.Control
                                     type="text"
                                     name={`enderecos[${index}].complemento`}
-                                    value={endereco.complemento || ''}
+                                    value={endereco.complemento || ""}
                                     onChange={handleChange}
                                   />
                                 </Form.Group>
